@@ -9,20 +9,18 @@ export default function FilmList({
   query: string;
   sort: string;
 }) {
-  // 1. Filtrage insensible à la casse par titre
   const filteredList = lists.filter((film) =>
     film.title.toLowerCase().includes(query.toLowerCase())
   );
 
-  // 2. Tri selon le critère
   const sortedList = [...filteredList].sort((a, b) => {
     switch (sort) {
       case "date":
-        return parseInt(a.release_date) - parseInt(b.release_date); // chronologique
+        return parseInt(a.release_date) - parseInt(b.release_date);
       case "title":
-        return a.title.localeCompare(b.title); // alphabétique
+        return a.title.localeCompare(b.title);
       case "score":
-        return parseFloat(b.rt_score) - parseFloat(a.rt_score); // score décroissant
+        return parseFloat(b.rt_score) - parseFloat(a.rt_score);
       default:
         return 0;
     }
