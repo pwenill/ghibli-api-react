@@ -14,11 +14,11 @@ export default function FilmDetailpage() {
       }),
   });
 
-  if (isLoading) return "Loading...";
+  if (isLoading) return <span>Chargement...</span>;
 
   const findFilm = data.find((x: any) => x.id == id);
 
-  if (!findFilm) return "Film not existing";
+  if (!findFilm) return <span>Chargement...</span>;
 
   return (
     <div className="container">
