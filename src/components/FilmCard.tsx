@@ -16,7 +16,7 @@ export default function FilmCard(data: Props) {
   return (
     <div className="movie-card">
       <div className="movie-card-image">
-        <img src={data.image} />
+        <img src={data.image} alt={data.title} />
         <button
           className={clsx(
             "favorite-button",
@@ -36,12 +36,12 @@ export default function FilmCard(data: Props) {
       <div className="movie-info">
         <h3>{data.title}</h3>
         <p>
-          <b>Réalisateur</b> : {data.producer}
+          <b>Réalisateur</b> : <span>{data.producer}</span>
         </p>
         <p>
-          <b>Années</b> : {data.year}
+          <b>Années</b> : <span>{data.year}</span>
         </p>
-        <Link to={`/films/${data.id}`} className="details-link">
+        <Link to={`/film/${data.id}`} className="details-link">
           Voir plus
         </Link>
       </div>

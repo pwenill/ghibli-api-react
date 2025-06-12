@@ -33,16 +33,20 @@ export default function FilmList({
         padding: "50px",
       }}
     >
-      {sortedList.map((film) => (
-        <FilmCard
-          key={film.id}
-          title={film.title}
-          producer={film.producer}
-          id={film.id}
-          year={film.release_date}
-          image={film.image}
-        />
-      ))}
+      {sortedList.length == 0 ? (
+        <p>Aucun film en favori pour le moment.</p>
+      ) : (
+        sortedList.map((film) => (
+          <FilmCard
+            key={film.id}
+            title={film.title}
+            producer={film.producer}
+            id={film.id}
+            year={film.release_date}
+            image={film.image}
+          />
+        ))
+      )}
     </div>
   );
 }
