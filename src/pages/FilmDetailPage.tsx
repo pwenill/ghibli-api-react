@@ -6,7 +6,7 @@ import { useParams } from "react-router";
 export default function FilmDetailpage() {
   const { id } = useParams<{ id: string }>();
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isSuccess } = useQuery({
     queryKey: ["films"],
     queryFn: () =>
       fetch("https://ghibliapi.vercel.app/films").then((res) => {
@@ -15,10 +15,11 @@ export default function FilmDetailpage() {
   });
 
   if (isLoading) return <span>Chargement...</span>;
+  if (!isSuccess) return <span>Film non trouvées !</span>;
 
   const findFilm = data.find((x: any) => x.id == id);
 
-  if (!findFilm) return <span>Chargement...</span>;
+  if (!findFilm) return <span>Film non trouvées !</span>;
 
   return (
     <div className="container">
